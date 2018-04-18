@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<body>
+<head>
+<title>Complain Form</title>
+</head>
+<h1>Register your complain</h1>
+<div class ="container">
+	<form method="post">
+		{% csrf_token %}
+		{{ form.as_ul}}
+		<button type = "submit">Submit</button>
+	</form>
+</div>
+<ul>
+    {% for message in messages %}
+    <li class="{{ message.tags }}">
+        {% if 'safe' in message.tags %}
+            {{ message|safe }}
+        {% else %}
+            {{ message }}
+        {% endif %}
+    </li>
+    {% endfor %}
+</ul>
+</body>
+</html>
